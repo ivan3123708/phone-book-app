@@ -1,0 +1,33 @@
+.add-modal
+  position: fixed
+  width: 800px
+  margin: auto
+  z-index: 20
+  transition: all .5s ease
+
+  .box
+    width: 90%
+    max-width: 400px
+    margin: auto
+    background-color: $grey-light
+    border: 1px solid $grey-light
+    border-radius: 4px
+
+    .btn-close
+      @include btn-empty
+      float: right
+      margin: 5px
+
+    h1
+      margin: 20px auto 30px auto
+      font-size: 20px
+
+    p
+      margin: 15px auto 10px auto
+
+    input
+      @include input
+
+    .btn-submit
+      @include btn-styled
+      margin: 20px
