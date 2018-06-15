@@ -38,7 +38,7 @@ module.exports = {
     publicPath: '/dist',
     historyApiFallback: true,
     proxy: [{
-      context: [],
+      context: ['/api/*'],
       target: 'http://localhost:5000',
     }],
   },
