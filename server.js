@@ -34,6 +34,19 @@ try {
   console.log(err);
 }
 
+app.get('/api/records', (req, res) => {
+  const query = 'SELECT * FROM records';
+
+  connection.query(query, (err, result) => {
+    if (err) {
+      console.log(err);
+      res.end(400);
+    } else {
+      res.send(result);
+    }
+  });
+});
+
 app.get('*', (req, res) => {
   res.sendFile(path.join(publicPath, 'index.html'));
 });
