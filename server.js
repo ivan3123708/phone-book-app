@@ -2,7 +2,9 @@ const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 const mysql = require('mysql');
-const { seedData } = require('./seeder/seedData');
+const { seedData } = require('./db/seedData');
+const { getRecords } = require('./db/getRecords');
+const { createRecord } = require('./db/createRecord');
 const privates = require('./config/privates');
 
 const publicPath = path.join(__dirname, 'client', 'public');
@@ -35,16 +37,11 @@ try {
 }
 
 app.get('/api/records', (req, res) => {
-  const query = 'SELECT * FROM records';
+  getRecords(connection, res);
+});
 
-  connection.query(query, (err, result) => {
-    if (err) {
-      console.log(err);
-      res.end(400);
-    } else {
-      res.send(result);
-    }
-  });
+app.post('/api/records', (req, res) => {
+  createRecord(connection, req, res);
 });
 
 app.get('*', (req, res) => {

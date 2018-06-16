@@ -13,6 +13,10 @@ class PhoneBook extends React.Component {
     this.state = {
       records: null,
     };
+
+    this.refreshRecords = (arr) => {
+      this.setState({ records: arr });
+    };
   }
 
   componentDidMount() {
@@ -29,7 +33,7 @@ class PhoneBook extends React.Component {
     return (
       <div className="phone-book">
         <div className="container">
-          <AddModal />
+          <AddModal refreshRecords={this.refreshRecords} />
           <h1>Phone Book</h1>
           <FilterForm />
           <button className="add-record" onClick={toggleModal}>
