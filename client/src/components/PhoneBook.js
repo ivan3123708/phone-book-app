@@ -17,16 +17,20 @@ class PhoneBook extends React.Component {
     this.refreshRecords = (arr) => {
       this.setState({ records: arr });
     };
+
+    this.getAllRecords = () => {
+      axios.get('/api/records')
+        .then((response) => {
+          this.setState({ records: response.data });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
   }
 
   componentDidMount() {
-    axios.get('/api/records')
-      .then((response) => {
-        this.setState({ records: response.data });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    this.getAllRecords();
   }
 
   render() {
@@ -36,6 +40,9 @@ class PhoneBook extends React.Component {
           <AddModal refreshRecords={this.refreshRecords} />
           <h1>Phone Book</h1>
           <FilterForm refreshRecords={this.refreshRecords} />
+          <button className="get-all-records" onClick={this.getAllRecords}>
+            Show All Records
+          </button>
           <button className="add-record" onClick={toggleModal}>
             <Add className="icon" />
             Add a Record
@@ -44,7 +51,12 @@ class PhoneBook extends React.Component {
             <div className="headings">
               <p>First Name</p><p>Last Name</p><p>Telephone Number</p>
             </div>
-            {this.state.records && this.state.records.map((record) => <ListItem key={record.id} record={record} refreshRecords={this.refreshRecords} />)}
+            {
+              this.state.records &&
+              this.state.records.length &&
+              this.state.records.map((record) => <ListItem key={record.id} record={record} refreshRecords={this.refreshRecords} />) ||
+              <p>No Results.</p>
+            }
           </div>
         </div>
       </div>
