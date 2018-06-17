@@ -35,7 +35,7 @@ class PhoneBook extends React.Component {
         <div className="container">
           <AddModal refreshRecords={this.refreshRecords} />
           <h1>Phone Book</h1>
-          <FilterForm />
+          <FilterForm refreshRecords={this.refreshRecords} />
           <button className="add-record" onClick={toggleModal}>
             <Add className="icon" />
             Add a Record

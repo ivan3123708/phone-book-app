@@ -1,11 +1,17 @@
 .filter-form
-  display: grid
-  grid-template-columns: 100px 1fr 100px 3fr
-  align-items: center
-  margin: 20px
 
-  input, select
-    @include input
+  form
+    display: grid
+    grid-template-columns: 100px 1fr 100px 1fr 135px
+    align-items: center
+    margin: 20px
 
-  select
-    cursor: pointer
+    input, select
+      @include input
+
+    select
+      cursor: pointer
+
+    button
+      @include btn-styled
+      margin-left: 10px
