@@ -9,7 +9,7 @@ const seedData = (connection) => {
 
   connection.query(createTableQuery, (err) => {
     if (err) {
-      console.log(`Error: ${err.sqlMessage}.`);
+      console.log(`Warning: ${err.sqlMessage}.`);
     } else {
       console.log('Table \'records\' created.');
 

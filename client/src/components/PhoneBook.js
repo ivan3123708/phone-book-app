@@ -44,7 +44,7 @@ class PhoneBook extends React.Component {
             <div className="headings">
               <p>First Name</p><p>Last Name</p><p>Telephone Number</p>
             </div>
-            {this.state.records && this.state.records.map((record) => <ListItem key={record.id} record={record} />)}
+            {this.state.records && this.state.records.map((record) => <ListItem key={record.id} record={record} refreshRecords={this.refreshRecords} />)}
           </div>
         </div>
       </div>

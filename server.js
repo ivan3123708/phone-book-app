@@ -5,6 +5,7 @@ const mysql = require('mysql');
 const { seedData } = require('./db/seedData');
 const { getRecords } = require('./db/getRecords');
 const { createRecord } = require('./db/createRecord');
+const { deleteRecord } = require('./db/deleteRecord');
 const privates = require('./config/privates');
 
 const publicPath = path.join(__dirname, 'client', 'public');
@@ -42,6 +43,10 @@ app.get('/api/records', (req, res) => {
 
 app.post('/api/records', (req, res) => {
   createRecord(connection, req, res);
+});
+
+app.delete('/api/records', (req, res) => {
+  deleteRecord(connection, req, res);
 });
 
 app.get('*', (req, res) => {

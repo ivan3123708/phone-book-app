@@ -1,6 +1,6 @@
 .list-item
   display: grid
-  grid-template-columns: 1fr 1fr 1fr
+  grid-template-columns: 1fr 1fr 1fr 50px
   justify-items: start
   width: 100%
   margin: 4px 0
@@ -9,3 +9,7 @@
 
   p
     margin: 10px
+
+  button
+    @include btn-empty
+    color: $red
