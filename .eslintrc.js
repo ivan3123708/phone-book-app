@@ -14,6 +14,7 @@ module.exports = {
         "jsx-a11y/no-static-element-interactions": 0,
         "max-len": 0,
         "no-console": 0,
+        "no-mixed-operators": 0,
         "no-param-reassign": [2, { "props": false }],
         "no-shadow": 0,
         "object-curly-newline": 0,
