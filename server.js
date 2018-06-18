@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 const connection = mysql.createConnection({
-  host: 'localhost',
+  host: privates.mysqlHost,
   user: privates.mysqlUser,
   password: privates.mysqlPassword,
 });
