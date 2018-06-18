@@ -3,15 +3,15 @@ const privates = require('../config/privates');
 const seedData = (connection) => {
   connection.query(`CREATE DATABASE ${privates.mysqlDatabase}`, (err) => {
     if (err) {
-      console.log('Warning: Database phone_book_db already exists.');
+      console.log(`Warning: Database ${privates.mysqlDatabase} already exists.`);
     } else {
       console.log('Database created.');
     }
 
-    connection.query('USE phone_book_db', (err) => {
+    connection.query(`USE ${privates.mysqlDatabase}`, (err) => {
       if (err) throw err;
 
-      console.log('Using phone_book_db database.');
+      console.log(`Using ${privates.mysqlDatabase} database.`);
 
       const createTableQuery = `CREATE TABLE records (
         id INT(11) NOT NULL AUTO_INCREMENT,
