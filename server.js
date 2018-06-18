@@ -13,30 +13,30 @@ const publicPath = path.join(__dirname, 'client', 'public');
 const port = process.env.PORT || 5000;
 
 const app = express();
-const connection = mysql.createConnection({
-  host: 'localhost',
-  user: privates.mysqlUser,
-  password: privates.mysqlPassword,
-  database: 'phone_book_db',
-});
 
 app.use(express.static(publicPath));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+const connection = mysql.createConnection({
+  host: 'localhost',
+  user: privates.mysqlUser,
+  password: privates.mysqlPassword,
+});
+
 connection.connect((err) => {
   if (err) {
     console.log('Connection failed.');
   } else {
-    console.log('Connected to mysql database.');
+    console.log('Connected to mysql.');
+
+    try {
+      seedData(connection);
+    } catch (err) {
+      console.log(err);
+    }
   }
 });
-
-try {
-  seedData(connection);
-} catch (err) {
-  console.log(err);
-}
 
 app.get('/api/records', (req, res) => {
   getRecords(connection, res);
