@@ -1,38 +1,75 @@
-# MERN App Boilerplate
+
+# Phone Book App
 
 ## Description
 
-Lightweight boilerplate for building apps with MERN stack.
-Includes configured express.js server file with pre-installed mongoose package and setup for client side with webpack configuration and react with redux ready for start developing the app.
+Phone book application with following features:
+
+* Adding a record into database with “First Name”, “Last Name”, “Telephone Number” fields from manual data entry form
+* Listing of all the records (possibly) currently (added but not deleted) in the database
+* Listing of all the records (possibly 0) that match search criteria for “Last Name”
+* Deleting of the record from the database
+
+## Requirements
+
+Node.js and MySQL installed
 
 ## Installation and Usage
 
 1. Clone the repo:
+
 ```
-$ git clone git@github.com:ivan3123708/mern_app_boilerplate.git
+$ git clone https://github.com/ivan3123708/phone-book-app.git
 ```
-2. Install server-side dependencies:
+
+2. Change the following lines in <code>server.js</code> in order to make connection to MySQL installed on your machine
+
+Comment out or delete line 10:
+
 ```
-$ cd mern_app_boilerplate
+// const privates = require('./config/privates');
+```
+
+Provide your user and password values on lines 23 and 24, like in this example:
+```
+const connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'yourmysqluser',
+  password: 'yourmysqlpassword',
+});
+```
+
+3. Install server-side dependencies:
+
+```
 $ npm install
 ```
-3. Install client-side dependencies:
+
+4. Install client-side dependencies:
+
 ```
 $ cd client
 $ npm install
 ```
-4. Start building your app
 
-## Brief Explanation for Beginners
+4. Build the app:
 
-### Server-side
+```
+$ npm run build
+```
 
-**server.js** - Your express server configuration. Here you manage routes and connection to your mongoDB server.
+5. Run the app:
 
-### Client-side
+```
+$ cd ..
+$ npm run start
+```
 
-**webpack.config.js** - Webpack configuration where you setup babel, loaders, dev server, output file etc.
+The application should now run on <code>localhost:5000</code>
 
-**src/** - Directory containing source code of your app with index.js as the base file that connects all the components, reducers, styles etc.
+## Tech Stack
 
-**public/** - Public directory which serves index.html file and bundled versions of your .js and .css files.
+* React
+* Sass
+* Node/Express
+* MySQL
