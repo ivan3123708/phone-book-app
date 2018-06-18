@@ -1,5 +1,7 @@
+const privates = require('../config/privates');
+
 const seedData = (connection) => {
-  connection.query('CREATE DATABASE phone_book_db', (err) => {
+  connection.query(`CREATE DATABASE ${privates.mysqlDatabase}`, (err) => {
     if (err) {
       console.log('Warning: Database phone_book_db already exists.');
     } else {
