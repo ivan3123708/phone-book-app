@@ -52,13 +52,13 @@ $ cd client
 $ npm install
 ```
 
-4. Build the app:
+5. Build the app:
 
 ```
 $ npm run build
 ```
 
-5. Run the app:
+6. Run the app:
 
 ```
 $ cd ..
