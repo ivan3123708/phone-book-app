@@ -14,7 +14,7 @@ Phone book application with following features:
 
 Node.js and MySQL installed
 
-## Installation and Usage
+## Installation and Usage on Local Machine
 
 1. Clone the repo:
 
@@ -22,21 +22,19 @@ Node.js and MySQL installed
 $ git clone https://github.com/ivan3123708/phone-book-app.git
 ```
 
-2. Change the following lines in <code>server.js</code> in order to make connection to MySQL installed on your machine
+2. Add parameters in order to connect to MySQL on your machine:
 
-Comment out or delete line 10:
+Create a file named ```dev.js``` and place it inside of ```config/``` directory.
+
+Inside ```dev.js``` paste this block of code, change ```mysqlUser``` and ```mysqlPassword``` and save the file:
 
 ```
-// const privates = require('./config/privates');
-```
-
-Provide your user and password values on lines 23 and 24, like in this example:
-```
-const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'yourmysqluser',
-  password: 'yourmysqlpassword',
-});
+module.exports = {
+  mysqlHost: 'localhost',
+  mysqlUser: '<your mysql user here>',
+  mysqlPassword: '<your mysql password here>',
+  mysqlDatabase: 'phone_book_db',
+};
 ```
 
 3. Install server-side dependencies:
