@@ -31,13 +31,13 @@ class FilterForm extends React.Component {
     return (
       <div className="filter-form">
         <form onSubmit={this.filterRecords}>
-          <p>Search by: </p>
+          <p className="text-1">Search by: </p>
           <select name="searchBy">
             <option value="first_name">First Name</option>
             <option value="last_name">Last Name</option>
             <option value="phone_number">Telephone Number</option>
           </select>
-          <p>Search for: </p>
+          <p className="text-2">Search for: </p>
           <input type="text" name="searchFor" placeholder="Type Here to Search..." />
           <button type="submit">
             <Search className="icon" />

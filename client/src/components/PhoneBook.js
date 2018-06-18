@@ -36,9 +36,9 @@ class PhoneBook extends React.Component {
   render() {
     return (
       <div className="phone-book">
+        <AddModal refreshRecords={this.refreshRecords} />
         <div className="container">
-          <AddModal refreshRecords={this.refreshRecords} />
-          <h1>Phone Book</h1>
+          <h2>PHONE BOOK</h2>
           <FilterForm refreshRecords={this.refreshRecords} />
           <button className="get-all-records" onClick={this.getAllRecords}>
             Show All Records

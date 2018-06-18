@@ -1,13 +1,12 @@
 .phone-book
   width: 100%
   max-width: 800px
-  height: 100vh
   margin: auto
   border: 1px solid transparent
 
   .container
     width: 95%
-    height: 95%
+    min-height: 95%
     margin: 20px auto
     text-align: center
     background-color: $grey-light
@@ -26,9 +25,13 @@
 
     .records-list
       width: 90%
-      margin: 70px auto
+      margin: 70px auto 20px auto
       padding: 0 20px
       border-top: 1.5px solid $green-light
+
+      @media (max-width: 600px)
+        width: 98%
+        padding: 2px
 
       .headings
         display: grid
@@ -38,3 +41,6 @@
         p
           margin: 10px
           font-weight: bold
+
+          @media (max-width: 600px)
+            font-size: 14px

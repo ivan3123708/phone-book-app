@@ -3,15 +3,37 @@
   form
     display: grid
     grid-template-columns: 100px 1fr 100px 1fr 135px
+    grid-template-rows: 1fr
+    grid-template-areas: 'text-1 input-1 text-2 input-2 button'
+    grid-gap: 0
     align-items: center
     margin: 20px
 
-    input, select
-      @include input
+    @media (max-width: 800px)
+      grid-template-columns: 1fr 1fr
+      grid-template-rows: 1fr 1fr 1fr
+      grid-template-areas: 'text-1 input-1' 'text-2 input-2' 'button button'
+      grid-column-gap: 10px
+
+    .text-1
+      grid-area: text-1
 
     select
+      @include input
       cursor: pointer
+      grid-area: input-1
+
+    .text-2
+      grid-area: text-2
+
+    input
+      @include input
+      grid-area: input-2
 
     button
       @include btn-styled
       margin-left: 10px
+      grid-area: button
+
+      @media (max-width: 800px)
+        margin-left: 0
