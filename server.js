@@ -38,6 +38,10 @@ connection.connect((err) => {
   }
 });
 
+setInterval(() => {
+  connection.query('SELECT 1');
+}, 5000);
+
 app.get('/api/records', (req, res) => {
   getRecords(connection, res);
 });
