@@ -2,23 +2,28 @@ const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.js',
+  mode: 'development',
+  entry: './src/index.tsx',
   output: {
     path: path.join(__dirname, 'public', 'dist'),
     filename: 'bundle.js',
   },
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js', '.jsx'],
+  },
   module: {
     rules: [
       {
-        test: /\.js$/,
-        exclude: /node_modules/,
+        test: /\.(t|j)sx?$/,
         use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['env', 'react'],
-            plugins: ['transform-class-properties', 'transform-object-rest-spread'],
-          },
+          loader: 'awesome-typescript-loader',
         },
+        exclude: [path.resolve(__dirname, 'node_modules')],
+      },
+      {
+        enforce: 'pre',
+        test: /\.js$/,
+        loader: 'source-map-loader',
       },
       {
         test: /index.sass/,
