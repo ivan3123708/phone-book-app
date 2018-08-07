@@ -1,33 +1,37 @@
-import React from 'react';
+import * as React from 'react';
 import axios from 'axios';
-import Add from 'react-icons/lib/md/add-box';
-import AddModal from './AddModal';
-import FilterForm from './FilterForm';
-import ListItem from './ListItem';
+import * as MD from 'react-icons/lib/md';
+import { AddModal } from './AddModal';
+import { FilterForm } from './FilterForm';
+import { ListItem } from './ListItem';
 import toggleModal from '../helpers/toggleModal';
 
-class PhoneBook extends React.Component {
-  constructor() {
-    super();
+interface PhoneBookState {
+  records: null | any[];
+}
+
+export class PhoneBook extends React.Component<{}, PhoneBookState> {
+  constructor(props: {}) {
+    super(props);
 
     this.state = {
       records: null,
     };
-
-    this.refreshRecords = (arr) => {
-      this.setState({ records: arr });
-    };
-
-    this.getAllRecords = () => {
-      axios.get('/api/records')
-        .then((response) => {
-          this.setState({ records: response.data });
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    };
   }
+
+  private refreshRecords = (arr: any[]): void => {
+    this.setState({ records: arr });
+  };
+
+  private getAllRecords = (): void => {
+    axios.get('/api/records')
+      .then((response) => {
+        this.setState({ records: response.data });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   componentDidMount() {
     this.getAllRecords();
@@ -44,7 +48,7 @@ class PhoneBook extends React.Component {
             Show All Records
           </button>
           <button className="add-record" onClick={toggleModal}>
-            <Add className="icon" />
+            <MD.MdAddBox className="icon" />
             Add a Record
           </button>
           <div className="records-list">
@@ -63,5 +67,3 @@ class PhoneBook extends React.Component {
     );
   }
 }
-
-export default PhoneBook;
