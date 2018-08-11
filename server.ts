@@ -27,7 +27,7 @@ const connectionConfig: mysql.ConnectionConfig = {
 
 const connection: mysql.Connection = mysql.createConnection(connectionConfig);
 
-connection.connect((err) => {
+connection.connect((err: mysql.MysqlError) => {
   if (err) {
     console.log('Connection failed.');
   } else {
