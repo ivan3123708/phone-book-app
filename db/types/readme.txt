@@ -1,0 +1,1 @@
+Use declaration files (.d.ts) in order to import javascript files without errors
