@@ -1,14 +1,17 @@
+import { Connection } from 'mysql';
+import { QueryError } from 'mysql2';
+
 const privates = require('../config/privates');
 
-const seedData = (connection) => {
-  connection.query(`CREATE DATABASE ${privates.mysqlDatabase}`, (err) => {
+export const seedData = (connection: Connection): void => {
+  connection.query(`CREATE DATABASE ${privates.mysqlDatabase}`, (err: QueryError): void => {
     if (err) {
       console.log(`Warning: Database ${privates.mysqlDatabase} already exists.`);
     } else {
       console.log('Database created.');
     }
 
-    connection.query(`USE ${privates.mysqlDatabase}`, (err) => {
+    connection.query(`USE ${privates.mysqlDatabase}`, (err: QueryError): void => {
       if (err) throw err;
 
       console.log(`Using ${privates.mysqlDatabase} database.`);
@@ -21,7 +24,7 @@ const seedData = (connection) => {
         PRIMARY KEY (id)
       )`;
 
-      connection.query(createTableQuery, (err) => {
+      connection.query(createTableQuery, (err: QueryError): void => {
         if (err) {
           console.log('Warning: Table records already exists.');
         } else {
@@ -56,5 +59,3 @@ const seedData = (connection) => {
     });
   });
 };
-
-module.exports = { seedData };
